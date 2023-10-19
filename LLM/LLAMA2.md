@@ -70,11 +70,7 @@ OpenAi开源了编码方式：tiKtoten
 >
 > Llama2将transformer中的LayerNorm换成了RMSNorm，MHA【Multi-Head Attention】换成了GQA【Grouped-query】（llama是MQA【Multi-query】）,postionnal换成了RotatyEmbedding（RoPE相对位置编码）
 >
-<<<<<<< HEAD
-> <img src="C:\Users\iMAN\AppData\Roaming\Typora\typora-user-images\image-20231010194510394.png" alt="image-20231010194510394" style="zoom:67%;" />
-=======
-> ![image-20231010194510394](C:\Users\iMAN\AppData\Roaming\Typora\typora-user-images\image-20231010194510394.png)
->>>>>>> cd7c24b8bf0a43d50f85317079ae7e87b427939b
+<img src="C:\Users\iMAN\AppData\Roaming\Typora\typora-user-images\image-20231010194510394.png" alt="image-20231010194510394" style="zoom:67%;" />
 
 ### RMSNorm
 
@@ -122,8 +118,3 @@ Rotary Position Embedding的目的是：通过绝对位置编码的方式实现�
 $$
 SiLu(x) = x*sigmoid(x)
 $$
-
-<<<<<<< HEAD
-=======
-
->>>>>>> cd7c24b8bf0a43d50f85317079ae7e87b427939b
