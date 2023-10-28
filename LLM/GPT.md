@@ -6,7 +6,7 @@ GPT分为两个阶段:**无监督的生成式预训练**(Genetative Pre-trainnin
 
 GPT是Decoder-Only的结构
 
-![GPT-Model](..\assert\GPT-Model.png)
+<img src="../assert/GPT-Model.png" width="100%">
 
 > Delim:Delimter,定界符'\$'
 >
