@@ -82,7 +82,7 @@ RMSNorm(Root Mean Square Layer Normalization)是LayerNorm的变体，RMSNorm省�
 
 作用：没有做re-center操作（移除了其中的均值项），简化计算量
 
-![image-20231011171341735](C:\Users\iMAN\AppData\Roaming\Typora\typora-user-images\image-20231011171341735.png)
+<img src="../assert/RMSNorm-Fun.png" width="50%">
 
 > ε避免分母为0
 
@@ -90,7 +90,7 @@ RMSNorm(Root Mean Square Layer Normalization)是LayerNorm的变体，RMSNorm省�
 
 我们希望输入的前面字符不对后面字符有一个较高的注意力，因为在处理NLP时，前面的字应该不知道后面的字，后面的字是由前面的字推理出来的，所以做Mid = softmax(Q, K)时，需要对Mid做mask操作。
 
-<img src="../assert/Masked-in-LLM.jpg" width="100%">
+<img src="../assert/Masked-in-LLM.png" width="100%">
 
 **softmax公式：**
 $$
