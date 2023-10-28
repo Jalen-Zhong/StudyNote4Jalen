@@ -93,6 +93,7 @@ RMSNorm(Root Mean Square Layer Normalization)是LayerNorm的变体，RMSNorm省�
 <img src="../assert/Masked-in-LLM.png" width="100%">
 
 **softmax公式：**
+
 $$
 softmax(x_i) = \frac{e^{x_i}}{\sum^n_{i=0}e^{x_i}}
 $$
@@ -118,7 +119,6 @@ Llama-2 7B 没用到GQA，只有70B用了
 Rotary Position Embedding的目的是：通过绝对位置编码的方式实现相对位置编码
 
 ### Feedback
-
 
 $$
 SiLu(x) = x*sigmoid(x)
