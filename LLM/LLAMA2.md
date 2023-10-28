@@ -62,7 +62,7 @@ OpenAi开源了编码方式：tiKtoten
 
 > 下图为Generative生成方式
 
-![Generative](..\assert\Generative.png)
+<img src="../assert/Generative.png" width="50%">
 
 **输出处理：**
 
@@ -74,7 +74,7 @@ OpenAi开源了编码方式：tiKtoten
 >
 > Llama2将transformer中的LayerNorm换成了RMSNorm，MHA【Multi-Head Attention】换成了GQA【Grouped-query】（llama是MQA【Multi-query】）,postionnal换成了RotatyEmbedding（RoPE相对位置编码）
 >
-![LLAMA2](..\assert\LLAMA2.png)
+> <img src="../assert/LLAMA2.png" width="100%">
 
 ### RMSNorm
 
@@ -89,7 +89,8 @@ RMSNorm(Root Mean Square Layer Normalization)是LayerNorm的变体，RMSNorm省�
 ### MASK
 
 我们希望输入的前面字符不对后面字符有一个较高的注意力，因为在处理NLP时，前面的字应该不知道后面的字，后面的字是由前面的字推理出来的，所以做Mid = softmax(Q, K)时，需要对Mid做mask操作。
-![Masked-in-LLM](..\assert\Masked-in-LLM.jpg)
+
+<img src="../assert/Masked-in-LLM.jpg" width="100%">
 
 **softmax公式：**
 $$

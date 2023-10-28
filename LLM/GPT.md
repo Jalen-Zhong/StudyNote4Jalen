@@ -16,7 +16,7 @@ GPT是Decoder-Only的结构
 
 与Transformer-Decoder不同的地方在于,只保留了Masked-MHA
 
-![GPT-Block](..\assert\GPT-Block.png)
+<img src="../assert/GPT-Block.png">
 
 ## 无监督的预训练
 
@@ -35,8 +35,8 @@ $$
 其中,$U=(u_{k},...,u_{1})$表示左侧窗口的词向量, $n$为模型层数, $W_{e}$为词嵌入向量,$W_{p}$为Position Embedding,$P(u)$是对最后的预测结果softmax后得到进行tokenizer-decoder
 
 > 下图为**Genarative**生成方式,这就是GPT中G的由来
-
-![Generative](..\assert\Generative.png)
+>
+> <img src="../assert/Generative.png" width="50%">
 
 ## 有监督的微调
 
