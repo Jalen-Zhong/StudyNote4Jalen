@@ -54,11 +54,15 @@ OpenAi开源了编码方式：tiKtoten
 - Token Embedding: 将Tokens映射到高维向量
 - Positiong Embedding: 添加位置编码信息，目的是为模型提供上下文信息
 
-### Generate
+### Generative
 
 **自回归生成：**
 
 - 利用自回归的方式，逐个生成输出序列的每个Token，前面生成内容作为上下文来帮助预测下一个Token
+
+> 下图为Generative生成方式
+
+![Generative](..\assert\Generative.png)
 
 **输出处理：**
 
@@ -70,7 +74,7 @@ OpenAi开源了编码方式：tiKtoten
 >
 > Llama2将transformer中的LayerNorm换成了RMSNorm，MHA【Multi-Head Attention】换成了GQA【Grouped-query】（llama是MQA【Multi-query】）,postionnal换成了RotatyEmbedding（RoPE相对位置编码）
 >
-<img src="C:\Users\iMAN\AppData\Roaming\Typora\typora-user-images\image-20231010194510394.png" alt="image-20231010194510394" style="zoom:67%;" />
+![LLAMA2](..\assert\LLAMA2.png)
 
 ### RMSNorm
 
@@ -85,7 +89,7 @@ RMSNorm(Root Mean Square Layer Normalization)是LayerNorm的变体，RMSNorm省�
 ### MASK
 
 我们希望输入的前面字符不对后面字符有一个较高的注意力，因为在处理NLP时，前面的字应该不知道后面的字，后面的字是由前面的字推理出来的，所以做Mid = softmax(Q, K)时，需要对Mid做mask操作。
-![image-20231011195706650](C:\Users\iMAN\AppData\Roaming\Typora\typora-user-images\image-20231011195706650.png)
+![Masked-in-LLM](..\assert\Masked-in-LLM.jpg)
 
 **softmax公式：**
 $$
