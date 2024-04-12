@@ -1,6 +1,6 @@
 # Celery
 
-[jump test](/ai-webapi.md)
+[jump test](#id_666)
 
 ## 组件概念：
 
