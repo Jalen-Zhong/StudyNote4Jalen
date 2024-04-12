@@ -1,6 +1,6 @@
 # Celery
 
-[jump test](#id_666)
+[StudyNote4Jalen/CodeStore/celery at main · Jalen-Zhong/StudyNote4Jalen (github.com)](.../LLM/GPT.md)
 
 ## 组件概念：
 
