@@ -1,6 +1,8 @@
 # Celery
 
-[StudyNote4Jalen/CodeStore/celery at main · Jalen-Zhong/StudyNote4Jalen (github.com)](.../LLM/GPT.md)
+## 代码地址：
+
+[StudyNote4Jalen/CodeStore/celery at main · Jalen-Zhong/StudyNote4Jalen (github.com)](https://github.com/Jalen-Zhong/StudyNote4Jalen/tree/main/CodeStore/celery)
 
 ## 组件概念：
 
