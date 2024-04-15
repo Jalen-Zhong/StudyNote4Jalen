@@ -28,6 +28,8 @@
 
 ## 程序代码测试：
 
+## 单级目录下的异步任务调度：
+
 ### 	创建celery任务并启动：
 
 ​		创建celery异步任务，并启动监听
@@ -200,4 +202,148 @@ ok
 
 - 任务成功与否都会返回任务编号id，在通过id查找结果时可能出现一下情况：任务失败、任务仍在执行、任务异常重试、任务等待执行等
 
-## 多级目录结构celery
+## 异步任务调度
+
+```python
+from tasks.task01 import send_email
+from tasks.task02 import send_msg
+from datetime import datetime
+v1 = datetime.now()
+print(f"当前时间:{v1}")
+# 立即告知celery去执行test_celery任务，并传入一个参数
+#result = send_email.apply_async(('yuan',),queue="testq")
+result = send_email.delay('yuan')
+print(f"任务ID:{result.id}")
+result = send_msg.delay('yuan')
+print(f"任务ID:{result.id}")
+```
+
+## 定时任务
+
+### celery队列定义：
+
+```python
+from celery import Celery
+from datetime import timedelta
+
+app = Celery('celery_demo',
+     broker='redis://127.0.0.1:6379/2',
+     backend='redis://127.0.0.1:6379/1',
+     # 包含以下两个任务文件，去相应的py文件中找任务，对多个任务做分类
+     include=['tasks.task01',
+              'tasks.task02'
+              ])
+
+app.conf.timezone = 'Asia/Shanghai' # 时区
+app.conf.enable_utc = False # 是否使用UTC
+```
+
+### 定时任务调度方式：
+
+```python
+from tasks.task01 import send_email
+from tasks.task02 import send_msg
+from datetime import datetime
+#方式一 固定时间
+print('--------Method 0--------:')
+v1 = datetime(2022, 4, 15, 14, 20, 00)
+print(f"当前时间:{v1}")
+v2 = datetime.fromtimestamp(v1.timestamp())
+print(f"任务运行时间:{v2}")
+result = send_email.apply_async(args=["定时任务-指定时间"], eta=v2)
+print(f"任务ID:{result.id}")
+
+# 方式二
+print('--------Method 1--------:')
+ctime = datetime.now()
+print(f"当前时间:{ctime}")
+utc_ctime = datetime.fromtimestamp(ctime.timestamp())
+from datetime import timedelta
+time_delay = timedelta(seconds=30)
+task_time = utc_ctime + time_delay
+print(f"任务运行时间:{task_time}")
+#使用apply_async并设定时间
+result = send_msg.apply_async(args=["定时任务-延时10秒"], eta=task_time)
+print(f"任务ID:{result.id}")
+```
+
+## 周期任务：
+
+### celery周期任务定义：
+
+```python
+#配置文件定时任务
+app.conf.beat_schedule = {
+    'sendmail-every-10-seconds': {
+        # 定义执行任务
+        'task': 'tasks.task01.send_email',
+        # 'schedule' : 1.0 # 表示1s执行一次
+        # # 'schedule' : crontab(minute='*/1') # 表示1 min 执行一次
+        'schedule': timedelta(seconds=10),
+        # send email相关传入参数
+        'args': ('李四',)
+    },
+}
+```
+
+### 周期任务调度：
+
+celery启动命令：`celery -A [tasks] beat -l info`
+
+### 其他：
+
+上述周期任务执行时，回每10s插入一份任务，但不执行，当启动`worker`时，会执行所插入任务。另外，即使当`beat`关闭时，也会执行先前所插入任务，这叫执行历史遗留任务。
+
+### 查询历史遗留任务：
+
+#### 方法一：
+
+cmd → `redis-cli` → select [dp] (broker) → `keys *` → `type celery` → `lrange celery 0 -1`
+
+#### 方法二：
+
+```python
+celery_cache_task_check.py
+
+import redis
+
+r = redis.Redis(host='127.0.0.1', port=6379, db=2)
+
+for i in r.lrange('celery', 0, -1):
+    print(i)
+```
+
+### 启动自定义worker对celery队列任务的并发处理数量
+
+`celery -A [tasks] worker -l info -c [num]`
+
+### 清空历史遗留任务
+
+```python
+celery_cache_task_check.py
+
+import redis
+
+r = redis.Redis(host='127.0.0.1', port=6379, db=2)
+# 删除任务缓存
+r.delect('celery')
+
+for i in r.lrange('celery', 0, -1):
+    print(i)
+```
+
+# celery组件学习笔记
+
+## 目录架构：
+
+```
+celery:
+	| README.md
+	| .gitignore
+	|
+	|—— celery02:定时任务与周期任务
+	|—— sinple_structure_task:单目录的异步任务
+	|—— 单目录定时任务
+		
+```
+
