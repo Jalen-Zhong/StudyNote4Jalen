@@ -53,7 +53,7 @@ $$
 
 ## 实验结果
 
-与[surve](https://github.com/Jalen-Zhong/StudyNote4Jalen/blob/main/yzw@program/Weakly-Supervised  Text Classification/survey.md)中的方法做了对比
+与[survey](https://github.com/Jalen-Zhong/StudyNote4Jalen/blob/main/yzw@program/Weakly-Supervised  Text Classification/RulePrompt.md)中的方法做了对比
 
 ![image-20240423154733922](assets/image-20240423154733922.png)
 
