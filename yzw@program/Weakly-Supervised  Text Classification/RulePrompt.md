@@ -53,10 +53,10 @@ $$
 
 ## 实验结果
 
-与[survey](D:\DeskTop\FileStuff\code\personal\StudyNote4Jalen\yzw@program\Weakly-Supervised  Text Classification\survey.md)中的方法做了对比
+与[surve](https://github.com/Jalen-Zhong/StudyNote4Jalen/blob/main/yzw@program/Weakly-Supervised  Text Classification/survey.md)中的方法做了对比
 
 ![image-20240423154733922](assets/image-20240423154733922.png)
 
 ## 个人理解
 
-与survry中的一些方法最大的不同地方在于，该文章用了强效规则来约束模型的自训练，这使模型不易发散。
+与`survry`中的一些方法最大的不同地方在于，该文章用了强效规则来约束模型的自训练，这使模型不易发散。
